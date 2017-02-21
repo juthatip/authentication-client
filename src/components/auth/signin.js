@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { fetchPosts }  from '../../actions/index';
+import * as actions  from '../../actions/index';
 
 class Signin extends Component {
 
-  // constructor(props) {
-  //   super(props);
-
-  //   this.handleFormSubmit = this.handleFormSubmit.bind(this);
-  // }
-
-  componentWillMount(){
-   this.props.fetchPosts();
-  }
-
-  handleFormSubmit({email , password}) {
-
-     
+  handleFormSubmit({email , password}) { 
     // Need to do something to log user in
-    // this.props.signinUser({ email, password});
+    this.props.signinUser({ email, password});
   }
 
   render() {
@@ -49,4 +37,4 @@ class Signin extends Component {
 export default reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-}, null, { fetchPosts } )(Signin);
+}, null, actions )(Signin);
