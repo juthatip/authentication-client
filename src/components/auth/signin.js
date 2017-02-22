@@ -19,7 +19,7 @@ class Signin extends Component {
 
         <div className="form-group">
           <label>Password</label>
-          <Field type="text" className="form-control" name="password" component="input" />
+          <Field type="password" className="form-control" name="password" component="input" />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
@@ -27,12 +27,11 @@ class Signin extends Component {
   }
 }
 
-
 // connect: first argument is mapStateToProps, 2nd is mapDispatchToProps
 // reduxForm: 1st is from config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
 
 let signinForm = reduxForm({
-  form: 'signin',
+  form: 'signin'
 })(Signin)
 //
 signinForm = connect(null, { signinUser })(signinForm)

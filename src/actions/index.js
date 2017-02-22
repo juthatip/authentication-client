@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistoy } from 'react-router';
-import { AUTH_USER , AUTH_ERROR } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
 
 const ROOT_URL = 'http://localhost:3090'
 
@@ -13,7 +13,7 @@ export function signinUser({ email, password }) {
           // - Update state to indicate user is authenticated
           dispatch({ type: AUTH_USER });
           // - Save the JWT token
-          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('token', response.data.token);
           // - redirect to the route /'feature'
           browserHistoy.push('/feature');
         })
@@ -30,4 +30,10 @@ export function authError(error) {
     type: AUTH_ERROR,
     payload: error
   };
+}
+
+export function signoutUser() {
+  localStorage.removeItem('token');
+  
+  return { type: UNAUTH_USER };
 }
